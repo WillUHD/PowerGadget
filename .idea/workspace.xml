@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="PowerGadget:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="275d082d-74e5-4ca3-afad-fec318fcf631" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/lib/flatlaf-3.7-sources.jar!/com/formdev/flatlaf/FlatDarkLaf.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/lib/flatlaf-3.7-sources.jar!/com/formdev/flatlaf/FlatLaf.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="39QgCedEyEcX0pVyZgGNLbBuRrv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AdminLauncher.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AdminTetherLauncher.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CorePlot.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LHMReader.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LHSDebugger.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LHSGrabber.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LHSReader.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MacOSWindow.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ModernWindow.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Power Gadget.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PowerGadget.executor&quot;: &quot;Profiler#1&quot;,
+    &quot;Application.ProfessionalCustomWindow.executor&quot;: &quot;Run&quot;,
+    &quot;Application.RunAsAdmin.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ServiceGate.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SilentAdminLauncher.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SystemThemeApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UltraModernWindow.executor&quot;: &quot;Run&quot;,
+    &quot;Application.bro.executor&quot;: &quot;Run&quot;,
+    &quot;Application.broTest2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.plotTest.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;X:/Code/PowerGadget/src/main/resources&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;X:/Code/PowerGadget/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.1748879&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.22993197&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.toDoOptions&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="X:\Code\PowerGadget\src\main\resources" />
+      <recent name="X:\Code\PowerGadget\service" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="X:\Code\PowerGadget\src\main\resources\fonts" />
+      <recent name="X:\Code\PowerGadget\service" />
+      <recent name="X:\Code\PowerGadget\src\main\resources" />
+      <recent name="X:\Code\PowerGadget\resources" />
+      <recent name="X:\Code\PowerGadget" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Power Gadget" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="main.java.Main" />
+      <module name="PowerGadget" />
+      <option name="VM_PARAMETERS" value="-XX:+UseZGC -Xms180m -Xmx180m -XX:ConcGCThreads=1 -XX:ParallelGCThreads=1 " />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="275d082d-74e5-4ca3-afad-fec318fcf631" name="Changes" comment="" />
+      <created>1770633587024</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1770633587024</updated>
+      <workItem from="1770633588874" duration="7918000" />
+      <workItem from="1770646632964" duration="2493000" />
+      <workItem from="1770649153278" duration="33126000" />
+      <workItem from="1770756721900" duration="34489000" />
+      <workItem from="1770895565663" duration="49670000" />
+      <workItem from="1771426247764" duration="14356000" />
+      <workItem from="1771483075632" duration="14530000" />
+      <workItem from="1771500722764" duration="3345000" />
+      <workItem from="1771571166111" duration="12614000" />
+      <workItem from="1771644126306" duration="395000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
