@@ -59,7 +59,7 @@ A lightweight non-overlay power gadget for Windows with a graph-based UI that do
 - Used `rcedit-x64.exe` to set the icon to [this `.ico` file](https://github.com/WillUHD/PowerGadget/blob/main/intelPG.ico), which is Intel Power Gadget's logo
 - A fat build for the main `.jar` should work fine on any JDK25, I used GraalVM JDK 25.0.2. 
 - Currently (since I'm the only one making this), there is no build script. If you would like to contribute, reference the existing build folders or hit me up!
-	> Uses Intel's Power Gadget logo, Apple's SF Pro font for the UI, epinter's LibreHardwareService, Oracle's GraalVM JDK 25, Amazon's Corretto JRE	
+	> Uses Intel's Power Gadget logo, Apple's SF Pro font for the UI, epinter's LibreHardwareService, FlatLaf, Jackson, Oracle's GraalVM JDK 25, Amazon's Corretto JRE
 
 	> No intention of infringement. If you have any issues, hit me up!
 
