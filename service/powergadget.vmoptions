@@ -1,0 +1,14 @@
+# PowerGadget VMOptions file
+# by willuhd
+# https://www.github.com/willuhd/PowerGadget
+
+# jarfile and javaw.exe location
+pg.jar
+runtime/bin/javaw.exe
+
+# vmargs: using ZGC for the smallest footprint (~65MB)
+# and nearly the best performance when idle
+-XX:+UseZGC
+-Xmx80m
+-XX:ConcGCThreads=1
+-XX:ParallelGCThreads=1
