@@ -1,17 +1,28 @@
+<img align="right" width="128" height="128" alt="Intel Power Gadget logo" src="https://github.com/user-attachments/assets/a534a0ec-ef20-4a33-a910-368b95846b46" />
+
 # PowerGadget
+
 Lightweight power gadget for Windows with a UI that doesn't suck, inspired by macOS Intel Power Gadget
 
 ### Intuition
-- HWiNFO's UI for graphs suck, OCCT's is better but it doesn't 'stack' the frequencies chart like macOS' Intel Power Gadget
+- HWiNFO's graph UI sucks, OCCT's is better but it doesn't 'stack' the frequencies chart 
 - Based on my understanding, no one has made a clean/minimalist (Mac-like) UI for monitoring performance on Windows that is also not an overlay
-- I took the initiative to make my own because I believe there are no true alternatives to the Intel Power Gadget for macOS (productivity based, dense UI etc)
+- So I wanted to make my own because I believe there are no true alternatives to the Intel Power Gadget for macOS (productivity based, dense UI etc)
 
 ### Demo
 
-### Build structure
+<img width="346" height="690" alt="image" src="https://github.com/user-attachments/assets/c2d4f065-a3b5-44e3-b126-a5bc45cad369" />
+
+> when compiling the launcher using `native-image`
+
+<img width="530" height="847" alt="image" src="https://github.com/user-attachments/assets/4af37f7f-c5bf-47a5-b8d2-64d6e9630c8b" />
+
+> works great in both light and dark mode, and automatically switches the color scheme based on Windows colors
+
+### Build
 - Launcher build command for `native-image` (produces one `.exe` along with several `.dll`s):
 	```
-	native-image --no-fallback --add-exports java.desktop/com.sun.java.swing.plaf.windows=ALL-UNNAMED -0b -jar .\launcher.jar
+	native-image --no-fallback -0b -jar .\launcher.jar
 	```
  	> Note: Using `-0b` quick build has smaller file size compared to `-O3` build. DO NOT use `-march=native`.
 
