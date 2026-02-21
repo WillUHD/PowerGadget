@@ -10,10 +10,10 @@ A lightweight non-overlay power gadget for Windows with a graph-based UI that do
 - So I wanted to make my own because I believe there are no true alternatives to the Intel Power Gadget for macOS (productivity based, dense UI etc)
 
 ### Structure
-- I custom made my own plotting library in Java's Graphics2D called `CorePlot`. Its goal is to faithfully recreate the macOS CorePlot UI, but it's also quite suitable for other graphing purposes
+- Custom made my own plotting library in Java's Graphics2D called `CorePlot`. Its goal is to faithfully recreate the macOS CorePlot UI, but it's also quite suitable for other graphing purposes
 - The actual monitoring part (backend) of this project is from [epinter](https://github.com/epinter)'s [LibreHardwareService](https://github.com/epinter/LibreHardwareService) (Mozilla 2.0), which uploads [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor) data to shared memory. I read it using the FFM API. Whatever CPUs/GPUs that supports, Power Gadget probably also supports. 
-- I also custom made my own Windows light/dark mode detector, which is a rewrite of [Dansoftowner](https://github.com/Dansoftowner)'s [jSystemThemeDetector](https://github.com/Dansoftowner/jSystemThemeDetector) (Apache 2.0) using a newer FFM API and removing the slf4j and compiler annotations for a leaner package. Somehow it works faster than UWP apps
-- I also custom made the launcher for the app in a child project, intended to be compiled AOT via GraalVM 
+- Also custom made my own Windows light/dark mode detector, which is a rewrite of [Dansoftowner](https://github.com/Dansoftowner)'s [jSystemThemeDetector](https://github.com/Dansoftowner/jSystemThemeDetector) (Apache 2.0) using a newer FFM API and removing the slf4j and compiler annotations for a leaner package. Somehow it works faster than UWP apps
+- Also custom made the launcher for the app in a child project
 
 ### Demo
 
@@ -48,7 +48,7 @@ A lightweight non-overlay power gadget for Windows with a graph-based UI that do
 	```
 	jlink --add-modules java.base,java.desktop --strip-debug --no-man-pages --compress=2 --output runtime
 	```
- - `LibreHardwareService.exe` backend from [epinter](https://github.com/epinter): [Release v0.3.0](https://github.com/epinter/LibreHardwareService/releases/tag/v0.3.0)
+ - `LibreHardwareService.exe` backend from epinter: [Release v0.3.0](https://github.com/epinter/LibreHardwareService/releases/tag/v0.3.0)
 	> Note: The `.exe` is too big to fit in the [service](https://github.com/WillUHD/PowerGadget/tree/main/service) folder. It's included in releases, but you have to place it yourself when compiling.
 	
 	> The backend comes with the MPL 2.0 License, which is included in the source and all forms of distribution (kudos epinter!)
@@ -56,5 +56,9 @@ A lightweight non-overlay power gadget for Windows with a graph-based UI that do
 	> That file contains info on where to locate `javaw.exe` and the target JAR, as well as all vmoptions.
 
 	> The current build uses ZGC because it has the least footprint (~65MB) and one of the least idle CPU usage (0-0.1%), matching or sometimes exceeding HWiNFO
+- Used `rcedit-x64.exe` to set the icon to [this `.ico` file](https://github.com/WillUHD/PowerGadget/blob/main/intelPG.ico), which is Intel Power Gadget's logo
 - A fat build for the main `.jar` should work fine on any JDK25, I used GraalVM JDK 25.0.2. 
 - Currently (since I'm the only one making this), there is no build script. If you would like to contribute, reference the existing build folders or hit me up!
+	> Uses Intel's Power Gadget logo, Apple's SF Pro font for the UI, epinter's LibreHardwareService, Oracle's GraalVM JDK 25, Amazon's Corretto JRE	
+
+	> No intention of infringement. If you have any issues, hit me up!
