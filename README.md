@@ -35,7 +35,7 @@ A lightweight non-overlay power gadget for Windows with a graph-based UI that do
 - Grab the latest release, unzip, and double-click the `.exe` file!
 - The app is a portable folder. Install it wherever you want! 
 
-### Build structure
+### Build
 - Launcher build command for `native-image` (produces one `.exe` along with several `.dll`s):
 	```
 	native-image --no-fallback -0b -jar .\launcher.jar
