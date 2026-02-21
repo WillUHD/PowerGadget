@@ -62,3 +62,7 @@ A lightweight non-overlay power gadget for Windows with a graph-based UI that do
 	> Uses Intel's Power Gadget logo, Apple's SF Pro font for the UI, epinter's LibreHardwareService, Oracle's GraalVM JDK 25, Amazon's Corretto JRE	
 
 	> No intention of infringement. If you have any issues, hit me up!
+
+### Future direction
+- Settings page with custom value pinning / hardware metric selection?
+- Auto-detect nominal TDP/frequency (might be gimmicky)? 
