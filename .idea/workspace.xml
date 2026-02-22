@@ -33,27 +33,9 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Application.AdminLauncher.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AdminTetherLauncher.executor&quot;: &quot;Run&quot;,
     &quot;Application.CorePlot.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LHMReader.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LHSDebugger.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LHSGrabber.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LHSReader.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MacOSWindow.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ModernWindow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Power Gadget.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PowerGadget.executor&quot;: &quot;Profiler#1&quot;,
-    &quot;Application.ProfessionalCustomWindow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RunAsAdmin.executor&quot;: &quot;Run&quot;,
     &quot;Application.ServiceGate.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SilentAdminLauncher.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SystemThemeApp.executor&quot;: &quot;Run&quot;,
-    &quot;Application.UltraModernWindow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.bro.executor&quot;: &quot;Run&quot;,
-    &quot;Application.broTest2.executor&quot;: &quot;Run&quot;,
-    &quot;Application.plotTest.executor&quot;: &quot;Run&quot;,
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;true&quot;,
@@ -75,22 +57,15 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="X:\Code\PowerGadget\src\main\resources" />
-      <recent name="X:\Code\PowerGadget\service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="X:\Code\PowerGadget\src\main\resources\fonts" />
-      <recent name="X:\Code\PowerGadget\service" />
-      <recent name="X:\Code\PowerGadget\src\main\resources" />
-      <recent name="X:\Code\PowerGadget\resources" />
-      <recent name="X:\Code\PowerGadget" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="Power Gadget" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.java.Main" />
       <module name="PowerGadget" />
-      <option name="VM_PARAMETERS" value="-XX:+UseZGC -Xms180m -Xmx180m -XX:ConcGCThreads=1 -XX:ParallelGCThreads=1 " />
+      <option name="VM_PARAMETERS" value="-XX:+UseZGC -Xmx85m -XX:ConcGCThreads=1 -XX:ParallelGCThreads=1 " />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
