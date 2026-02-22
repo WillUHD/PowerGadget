@@ -65,7 +65,7 @@ class ServiceGate {
 		IO.println("PowerGadget (by willuhd)");
 		try {
 			IO.println("---> Starting monitoring service");
-			if (grabLHSJsonBytes() != null) IO.println("LibreHardwareService is already running - if the data doesn't update, kill it in Task Manager and restart the app.");
+			if (grabLHSJsonBytes() != null) IO.println("\t'--> LibreHardwareService is already running.\n\t\t If the data doesn't update, kill it in Task Manager and restart the app.");
 			else {
 				IO.println("\t'--> Launching LibreHardwareService - waiting UAC prompt confirmation");
 				launchAdmin();

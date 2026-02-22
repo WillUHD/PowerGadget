@@ -1,7 +1,5 @@
 package main.java;
 
-import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -27,13 +25,13 @@ import java.util.concurrent.CopyOnWriteArrayList;
 ///
 /// ### At a glance
 /// - Customizable plot data complete with color and thickness, adjustable **on-the fly**, even after declaration
-/// - Ability to add shading between 2 elements, and even **assign different shade colors based on positive/negative shaded area**
+/// - Ability to add shading between 2 elements to visualize area difference or represent a band
 /// - Freely rearrange the order in which series are drawn on graph and shown in legend **(independent!)**
 /// - Set default graph positions, and handle how the graph **dynamically makes room or assigns padding** to new data (or not)
 /// - Axis labels use **pleasing numbers as well as unlabelled dimmed sub-axes** to make it look both pretty and precise
 /// - Legend values with decimals that are squished will truncate by **reducing sig figs** before resorting to ellipses
 ///
-/// ### Real world impact
+/// ### Performance impact
 /// - Low resource consumption: 10+ elements among 4 CorePlots each updating at 10Hz is measured in the 10s of MHz effective clock
 /// - Acts as any other JPanel component, easy integration with existing Swing UIs without introducing annoying new windows
 public class CorePlot extends JPanel {
@@ -92,7 +90,7 @@ public class CorePlot extends JPanel {
 		try {dir = new File(CorePlot.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile();}
 		catch (URISyntaxException e) {
 			System.err.println("\t'--> fatal error: Can't get files - " + e.getMessage());
-			try {UIManager.setLookAndFeel(new WindowsLookAndFeel());}
+			try {UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}
 			catch (Exception f) {makeErr("Can't get the files in the current folder, because " + e.getMessage() +
 					"\nwhich is caused by " + e.getCause() + ".\n\nAdditionally, failed to get the LaF: " + f.getMessage());}
 			makeErr("Can't get the files in the current folder, because " + e.getMessage() +
@@ -152,9 +150,9 @@ public class CorePlot extends JPanel {
 	///     - Fixing both bounds essentially just makes the graph static.
 	public enum ScalingMode { dynamic, hybrid }
 	public record Range(float min, float max) {}
-	public record Shade(String idA, String idB, Color pos, Color neg, Color pan, Color pA, Color nA, Color xA) {
-		public Shade(String a, String b, Color p, Color n, Color x) {
-			this(a, b, p, n, x, a(p), a(n), a(x));
+	public record Shade(String idA, String idB, Color pos, Color neg, Color pA, Color nA) {
+		public Shade(String a, String b, Color p, Color n) {
+			this(a, b, p, n, a(p), a(n));
 		}
 		static Color a(Color c) {return new Color(c.getRed(), c.getGreen(), c.getBlue(), CorePlot.opacity);}
 	}
@@ -214,9 +212,9 @@ public class CorePlot extends JPanel {
 		return s;
 	}
 
-	public void addShade(Series a, Series b, Color p, Color n, Color x) {
+	public void addShade(Series a, Series b, Color p, Color n) {
 		if (a == null || b == null) return;
-		shades.add(new Shade(a.id, b.id, p, n, x));
+		shades.add(new Shade(a.id, b.id, p, n));
 	}
 
 	public void pin(float v) { pins.add(v); rangeInv = true; repaint(); }
@@ -364,7 +362,12 @@ public class CorePlot extends JPanel {
 		g2d.setFont(fLbl);
 		g2d.drawString(unit, gutter + gw - g2d.getFontMetrics().stringWidth(unit), header - 32);
 
-		int lx = gutter + 35, ly = header + 12, lw = gw - 45, lh = gh - 24;
+		// bounds of the gutters within graph's legal drawing area and graph's physical border
+		int lx = gutter + 27, ly = header + 12, lw = Math.max(0, gw - 35), lh = Math.max(0, gh - 24);
+
+		g2d.setColor(cGrid);
+		g2d.drawLine(lx, ly, lx, ly + lh);
+
 		var span = Math.max(1e-9f, range.max - range.min);
 
 		bgCache.setRoundRect(gutter, header, gw, gh, radius, radius);
@@ -391,24 +394,24 @@ public class CorePlot extends JPanel {
 				}
 			}
 
-			if (y >= ly - 10 && y <= ly + lh + 10) {
-				if (y >= ly && y <= ly + lh) {
-					var pinned = false;
-					for (var p : pins) if (Math.abs(p - f) < 0.0001f) { pinned = true; break; }
-					if (!pinned) {
-						g2d.setColor(cGrid);
-						g2d.drawLine(lx, y, lx + lw, y);
-					}
+			// prevent overflow
+			if (y >= ly && y <= ly + lh) {
+				var pinned = false;
+				for (var p : pins) if (Math.abs(p - f) < 0.0001f) { pinned = true; break; }
+				if (!pinned) {
+					g2d.setColor(cGrid);
+					g2d.drawLine(lx, y, lx + lw, y);
 				}
-
-				var ty = y + 4f;
-				if (y < ly + 8) ty = ly + 10;
-				else if (y > ly + lh - 8) ty = ly + lh - 2;
-
-				var lbl = axisLabels.get(v);
-				g2d.setColor(c.subtle);
-				g2d.drawString(lbl, lx - fmAxis.stringWidth(lbl) - 8, ty);
 			}
+
+			// nudge axis labels inwards so the graph doesn't look cramped
+			var ty = y + 4f;
+			if (y < ly + 8) ty = (float) ly + fmAxis.getAscent() / 2f;
+			else if (y > ly + lh - 8) ty = ly + lh + 2;
+
+			var lbl = axisLabels.get(v);
+			g2d.setColor(c.subtle);
+			g2d.drawString(lbl, lx - fmAxis.stringWidth(lbl) - 8, ty);
 		}
 
 		g2d.setColor(c.pin);
@@ -513,14 +516,14 @@ public class CorePlot extends JPanel {
 		var pan0 = s1.pBuf[(s1.head - n + s1.cap) % s1.cap];
 		var c10 = s1.vBuf[(s1.head - n + s1.cap) % s1.cap];
 		var c20 = s2.vBuf[(s2.head - n + s2.cap) % s2.cap];
-		runColor = pan0 ? shade.xA : (c10 >= c20 ? shade.pA : shade.nA);
+		runColor = pan0 ? shade.pA : (c10 >= c20 ? shade.pA : shade.nA);
 
 		for (var v = 1; v < n; v++) {
 			var idx1 = (s1.head - n + v + s1.cap) % s1.cap;
 			var pan = s1.pBuf[idx1];
 			var c1 = s1.vBuf[idx1];
 			var c2 = s2.vBuf[(s2.head - n + v + s2.cap) % s2.cap];
-			var segColor = pan ? shade.xA : (c1 >= c2 ? shade.pA : shade.nA);
+			var segColor = pan ? shade.pA : (c1 >= c2 ? shade.pA : shade.nA);
 
 			if (!segColor.equals(runColor)) {
 				shadePath.reset();
@@ -563,7 +566,6 @@ public class CorePlot extends JPanel {
 		}
 	}
 
-
 	private Range calcRange() {
 		float dMin = Float.MAX_VALUE, dMax = -Float.MAX_VALUE;
 		var has = false;
@@ -581,20 +583,14 @@ public class CorePlot extends JPanel {
 			}
 		}
 
-		for (var p : this.pins) {
-			if (p < dMin) dMin = p;
-			if (p > dMax) dMax = p;
-			has = true;
-		}
-
 		if (!has) return new Range(0, 10);
 
+		// expand top/bottom for more room
 		if (mode == ScalingMode.hybrid) {
 			var rMin = hMinFixed ? hRefMin : Math.min(dMin, hRefMin);
-			if (!hMinFixed && rMin < hRefMin) rMin -= Math.abs(rMin * 0.15f);
-
+			if (!hMinFixed && rMin < hRefMin) rMin -= (hRefMin - rMin) * 0.05f;
 			var rMax = hMaxFixed ? hRefMax : Math.max(dMax, hRefMax);
-			if (!hMaxFixed && rMax > hRefMax) rMax += Math.abs(rMax * 0.15f);
+			if (!hMaxFixed && rMax > hRefMax) rMax += (rMax - hRefMax) * 0.05f;
 			return new Range(rMin, rMax);
 		} else return new Range(dMin - dynPadBot, dMax + dynPadTop);
 	}
@@ -606,8 +602,8 @@ public class CorePlot extends JPanel {
 		var span = range.max - range.min;
 		if (span <= 0) span = 1;
 
-		// 25.0 is the axis's preferred spacing
-		var targetStep = (span / (h / 25.0f));
+		// the axis's preferred spacing
+		var targetStep = (span / (h / 18f));
 
 		// small algorithm: make the numbers look like graph numbers
 		// instead of random stuff like 0.37, 11.1, etc
@@ -619,7 +615,7 @@ public class CorePlot extends JPanel {
 		else if (base <= 5) axisStep = 5 * mag;
 		else axisStep = 10 * mag;
 
-		axisStart = (float) (Math.ceil(range.min / axisStep) * axisStep);
+		axisStart = (float) (Math.floor(range.min / axisStep) * axisStep);
 
 		var axisPrec = 0;
 		if (axisStep < 1.0f) axisPrec = (int) Math.ceil(-Math.log10(axisStep));
