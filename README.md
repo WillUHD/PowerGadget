@@ -19,13 +19,7 @@ A lightweight non-overlay power gadget for Windows with a graph-based UI that do
 
 ---
 
-<img width="346" height="690" alt="image" src="https://github.com/user-attachments/assets/c2d4f065-a3b5-44e3-b126-a5bc45cad369" />
-
-> my system wattage when compiling the launcher using `native-image`
-
----
-
-<img width="965" height="1602" alt="image" src="https://github.com/user-attachments/assets/e09a964d-037a-4ecb-8162-7b8754db34e2" />
+<img width="1841" height="1532" alt="Power Gadget by willuhd, in both light & dark mode" src="https://github.com/user-attachments/assets/5d5eb2af-8619-4790-bb4a-c4fc932b389a" />
 
 > works great in both light and dark mode, and automatically switches the color scheme based on Windows colors
 
