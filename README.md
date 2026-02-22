@@ -6,11 +6,11 @@ A lightweight non-overlay power gadget for Windows with a graph-based UI that do
 
 ### Intuition
 - HWiNFO's graph UI sucks, OCCT's is better but it doesn't 'stack' the frequencies chart 
-- Based on my understanding, no one has made a clean/minimalist (Mac-like) UI for monitoring performance on Windows that is also not an overlay
+- Based on my understanding, no one has made a (Mac-like) UI for monitoring performance on Windows that is also not an overlay
 - So I wanted to make my own because I believe there are no true alternatives to the Intel Power Gadget for macOS (productivity based, dense UI etc)
 
 ### Structure
-- Custom made my own plotting library called `CorePlot`. Its goal is to faithfully recreate the macOS CorePlot UI, but it's also quite suitable for other graphing purposes
+- Custom made my own plotting library called `CorePlot`. Its goal is to faithfully recreate the macOS Power Gadget plots, but it's also quite suitable for other graphing purposes
 - The actual monitoring part (backend) of this project is from [epinter](https://github.com/epinter)'s [LibreHardwareService](https://github.com/epinter/LibreHardwareService) (Mozilla 2.0), which uploads [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor) data to shared memory. I read it using the FFM API. Whatever CPUs/GPUs that supports, Power Gadget probably also supports. 
 - Also custom made my own Windows light/dark mode detector, which is a rewrite of [Dansoftowner](https://github.com/Dansoftowner)'s [jSystemThemeDetector](https://github.com/Dansoftowner/jSystemThemeDetector) (Apache 2.0) using a newer FFM API and removing the slf4j and compiler annotations for a leaner package. Somehow it works faster than UWP apps
 - Also custom made the launcher for the app in a child project
@@ -27,7 +27,8 @@ A lightweight non-overlay power gadget for Windows with a graph-based UI that do
 
 ### How to run
 - Grab the latest release, unzip, and double-click the `.exe` file!
-- The app is a portable folder. Install it wherever you want! 
+- The app is a portable folder. Install it wherever you want!
+- Small memory footprint (~65-85MB), minimal impact on performance (consumes about 10-20MHz effective clock on a modern CPU)
 
 ### Build
 - Launcher build command for `native-image`:
