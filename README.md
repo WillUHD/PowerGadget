@@ -25,7 +25,7 @@ A lightweight non-overlay power gadget for Windows with a graph-based UI that do
 
 ---
 
-<img width="530" height="847" alt="image" src="https://github.com/user-attachments/assets/4af37f7f-c5bf-47a5-b8d2-64d6e9630c8b" />
+<img width="965" height="1602" alt="image" src="https://github.com/user-attachments/assets/e09a964d-037a-4ecb-8162-7b8754db34e2" />
 
 > works great in both light and dark mode, and automatically switches the color scheme based on Windows colors
 
