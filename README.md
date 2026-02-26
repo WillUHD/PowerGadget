@@ -62,4 +62,6 @@ A lightweight non-overlay power gadget for Windows with a graph-based UI that do
 - Settings page with custom value pinning / hardware metric selection?
 - Auto-detect nominal TDP/frequency (might be gimmicky)?
 - Known issue: Crashes when trying to enter remote desktop, requiring restarting the app. Unfortunately, this is a problem with AWT and is unfixable on my side
+- Make it also work on non-Intel systems (currently only utilization shows up on an AMD CPU)
+- Multi-GPU support (not just iGPUs)
 
