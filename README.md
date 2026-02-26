@@ -28,7 +28,8 @@ A lightweight non-overlay power gadget for Windows with a graph-based UI that do
 ### How to run
 - Grab the latest release, unzip, and double-click the `.exe` file!
 - The app is a portable folder. Install it wherever you want!
-- Small memory footprint (~65-85MB), minimal impact on performance (consumes about 10-20MHz effective clock on a modern CPU)
+- Small memory footprint (~65-85MB), minimal impact on performance (consumes about 10-20MHz effective clock)
+- Currently, this works on all x64 Windows 10/11 systems, but support is only tested for Intel IA/GT
 
 ### Build
 - Launcher build command for `native-image`:
@@ -59,9 +60,7 @@ A lightweight non-overlay power gadget for Windows with a graph-based UI that do
 	> No intention of infringement. If you have any issues, hit me up!
 
 ### Future direction
-- Settings page with custom value pinning / hardware metric selection?
-- Auto-detect nominal TDP/frequency (might be gimmicky)?
-- Known issue: Crashes when trying to enter remote desktop, requiring restarting the app. Unfortunately, this is a problem with AWT and is unfixable on my side
-- Make it also work on non-Intel systems (currently only utilization shows up on an AMD CPU)
-- Multi-GPU support (not just iGPUs)
-
+- A settings page to adjust plot capacity, plot interval, exclude certain metrics, pin custom values, etc
+- Auto-detect nominal TDP/frequency to pin on the graph (as opposed to hard-set 24W/2.0GHz)
+- Known issue: Will crash when switching the graphics context (eg. entering remote desktop), which is an AWT issue and is unfixable
+- Improve backend support for non-Intel systems with d/eGPUs (currently, an AMD CPU will only show utilization)
